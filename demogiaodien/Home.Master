@@ -1,0 +1,132 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Home.master.cs" Inherits="demogiaodien.Home" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>web tin tức</title>
+    <link href="themes/style.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="themes/slide.css">
+	<link rel="stylesheet" type="text/css" href="themes/font-awesome/css/font-awesome.css">
+    <script type="text/javascript" src="js/backtop.js">
+    </script>
+   
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Home" runat="server">
+        <div id="banner" style="height:150px;margin-top:1px;position:sticky">
+            <img src="image/banner.jpg" style="width:100%;height:100%"/>
+        </div>       
+
+        <div id="menutop">
+            <div id="menu">
+                <ul>
+                    <li ><a href="index.aspx">TRANG CHỦ</a></li>
+                    <asp:Repeater ID="rpBanTin" runat="server">
+                        <ItemTemplate>
+                            
+                            <li ><a href="bantin.aspx?idbantin=<%# Eval("IDbantin") %>"><%# Eval("noiDung")%></a></li>
+
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <%
+                        if ((Boolean)Session["admin"] == false)
+                        {
+                         %>
+                            <li ><a href="login.aspx">ĐĂNG NHẬP</a></li>  
+                   <%
+                        }
+                        else
+                        {
+                         %>
+                            
+                            <li><a href="chitietAdd.aspx">THÊM MỚI</a></li>
+                            <li><a href="Quanly.aspx">QUẢN LÝ</a></li>
+                            <li><asp:Label ID="Label1" runat="server" Text="Label" ></asp:Label></li>
+                            <li><a href="logout.aspx">THOÁT</a></li>
+                       <%} %>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="maincontent">
+            <div id="content">
+                <div id="slider" style="width: 100%; text-align: left; height: 200px;">
+                    <div class="slide">
+		                <div class="dieuhuong">
+			                <i class="fa fa-chevron-circle-left" onclick="Back();"></i>
+			                <i class="fa fa-chevron-circle-right" onclick="Next();"></i>
+		                </div>
+		                <div class="chuyen-slide">
+			                <img  src="image/1.jpg"> 
+			                <img  src="image/2.jpg">
+			                <img  src="image/3.jpg"> 
+			                <img  src="image/4.jpg"> 
+			                <img  src="image/5.jpg"> 
+		                </div>
+	                </div>
+                    <script type="text/javascript" src="js/slide.js"></script>
+                </div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+            <div id="rightcontent">
+                <h1>Bạn nên quan tâm </h1>
+                <div id="rcontent">
+                    <%--<div class="search">
+                        <input id="searchinput" type="text" placeholder="Tìm Kiếm"
+                            <%--onfocus="HideText();" onblur="ShowText();" onkeypress="return BBEnterPress1(event);--">
+                    </div>--%>
+                    <div>
+                        <a href="https://ncov.moh.gov.vn/" target="_blank"><img src="image/corona-1.png" style="width: 100%; height: 180px;" />Cập nhật tình hình dịch Corona</a>
+                    </div>
+                    <div>
+                        <a href="https://vietnamnet.vn/vn/the-thao/euro-2020/euro-2020-hoan-vi-covid-19-uefa-va-lua-chon-dong-tien-625355.html" >
+                            <img src="image/euro.jpg" style="width: 100%; height: 180px;"/>
+                            Tạm hoãn Euro 2020
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://giphy.com/gifs/laclippers-clippers-la-los-angeles-VgTMZXApRazyRJW5TR/links" target="_blank">
+                        <img src="https://media.giphy.com/media/VgTMZXApRazyRJW5TR/giphy.gif" style="height: 180px; width: 100%" /></a>
+                    </div>
+                    <div>
+                        <%--<iframe  src="https://www.youtube.com/embed/ZUZ2Fc0jads" style="width:100% ;height:165px; <%--allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture""></iframe>--%>
+                        <iframe width="100%" height="200px" src="https://www.youtube.com/embed/Ij-2Z4KlF7E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <hr style="background:#ff0000;height:3px;margin:10px 2px 0 2px" />
+                    <div>
+                        <p style="margin-left:10px;font-size:16px;color:#ff0000;font-weight:bold">Tin ngẫu nhiên</p>
+                        <ul>
+                                <asp:Repeater ID="rpRandom" runat="server">
+                                    <ItemTemplate>
+                                        <li>
+                                        <a href="chitiet.aspx?idbantin=<%# Eval("IDBanTin") %>&id=<%# Eval ("ID")%>"><%# Eval("tieuDe") %></a>
+                                        </li>
+                                     </ItemTemplate>
+                                     </asp:Repeater>
+                        
+                        </ul>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="footercontent">
+                    Copyright@: Lập trình web 2020 <br />
+                    Các thành viên nhóm: Nguyễn Tấn Dũng, Lại Tiến Đạt, Nguyễn Thị Hương
+            </div>
+        </div>
+        <div id="myBtn">
+            <button><img src="image/backtop.png" /></button>
+        </div>
+            
+    </form>
+</body>
+</html>

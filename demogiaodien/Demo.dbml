@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Demogd" Class="DemoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ENDCLEAR\SQLExpress;Initial Catalog=Demogd;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DemogdConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BanTin" Member="BanTins">
+    <Type Name="BanTin">
+      <Column Name="IDBanTin" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="noiDung" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="BanTin_ChiTiet" Member="ChiTiets" ThisKey="IDBanTin" OtherKey="IDBanTin" Type="ChiTiet" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChiTiet" Member="ChiTiets">
+    <Type Name="ChiTiet">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tieuDe" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="noiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lanXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayDang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDBanTin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hinhAnh" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Association Name="BanTin_ChiTiet" Member="BanTin" ThisKey="IDBanTin" OtherKey="IDBanTin" Type="BanTin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DangNhap" Member="DangNhaps">
+    <Type Name="DangNhap">
+      <Column Name="IDName" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="passWord" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.bantin_delete" Method="bantin_delete">
+    <Parameter Name="IDbantin" Parameter="iDbantin" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ChiTiet_Update" Method="ChiTiet_Update">
+    <Parameter Name="tieuDe" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="noiDung" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.bantin_insert" Method="bantin_insert">
+    <Parameter Name="noiDung" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.bantin_selectall" Method="bantin_selectall">
+    <ElementType Name="bantin_selectallResult">
+      <Column Name="IDBanTin" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="noiDung" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.bantin_update" Method="bantin_update">
+    <Parameter Name="noiDung" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="IDbantin" Parameter="iDbantin" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ChiTiet_select" Method="ChiTiet_select">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ChiTiet_selectResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tieuDe" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="noiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lanXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayDang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDBanTin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ChiTiet_SelectAll" Method="ChiTiet_SelectAll">
+    <ElementType Name="ChiTiet_SelectAllResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tieuDe" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="noiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lanXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayDang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDBanTin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ChiTiet_solanxem" Method="ChiTiet_solanxem">
+    <Parameter Name="lanXem" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.dangnhap_searchall" Method="dangnhap_searchall">
+    <ElementType Name="dangnhap_searchallResult">
+      <Column Name="IDName" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="userName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="passWord" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dangnhap_search" Method="dangnhap_search">
+    <Parameter Name="userName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="passWord" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="dangnhap_searchResult">
+      <Column Name="IDName" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="userName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="passWord" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.chitiet_lanxem" Method="chitiet_lanxem">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="lanXem" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.bantin_selectid" Method="bantin_selectid">
+    <Parameter Name="idbantin" Type="System.Int32" DbType="Int" />
+    <ElementType Name="bantin_selectidResult">
+      <Column Name="IDBanTin" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="noiDung" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dangnhap_insert" Method="dangnhap_insert">
+    <Parameter Name="userName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="passWord" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ChiTiet_SelectID" Method="ChiTiet_SelectID">
+    <Parameter Name="IDBanTin" Parameter="iDBanTin" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ChiTiet_SelectIDResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tieuDe" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="noiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lanXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayDang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDBanTin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ChiTiet_Insert" Method="ChiTiet_Insert">
+    <Parameter Name="tieuDe" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="noiDung" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ngayDang" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="IDBanTin" Parameter="iDBanTin" Type="System.Int32" DbType="Int" />
+    <Parameter Name="hinhAnh" Type="System.String" DbType="NVarChar(200)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.chitiet_selectbantin" Method="chitiet_selectbantin">
+    <Parameter Name="idbantin" Type="System.Int32" DbType="Int" />
+    <ElementType Name="chitiet_selectbantinResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tieuDe" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="noiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lanXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayDang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDBanTin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hinhAnh" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.chitiet_selecthome2" Method="chitiet_selecthome2">
+    <ElementType Name="chitiet_selecthome2Result">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tieuDe" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="noiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lanXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayDang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDBanTin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hinhAnh" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.chitiet_selectHome" Method="chitiet_selectHome">
+    <ElementType Name="chitiet_selectHomeResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tieuDe" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="noiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lanXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayDang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDBanTin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hinhAnh" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Select_randomIDtin" Method="Select_randomIDtin">
+    <Parameter Name="IDbantin" Parameter="iDbantin" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Select_randomIDtinResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tieuDe" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="noiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lanXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayDang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDBanTin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hinhAnh" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.chitiet_selectrandom" Method="chitiet_selectrandom">
+    <ElementType Name="chitiet_selectrandomResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tieuDe" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="noiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lanXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayDang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDBanTin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hinhAnh" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.delete_ID" Method="delete_ID">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateTin" Method="UpdateTin">
+    <Parameter Name="tieuDe" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="noiDung" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="hinhAnh" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

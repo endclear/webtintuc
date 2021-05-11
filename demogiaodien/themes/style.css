@@ -1,0 +1,272 @@
+﻿
+body {
+    width: 70%;
+    margin: 0 auto;
+    padding: 0;
+    font-family: Verdana;
+    font-size: 80%;
+    background-color: #e3e3e3;
+}
+
+
+#menutop {
+    height: 30px;
+    background: #ED4848;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin-top: 0 auto;
+}
+ #menu{
+     width:100%;
+     margin:0 auto;
+     padding:0;
+ }
+    #menu ul {
+        list-style: none;
+        margin: 0;
+        padding-top: 7px;
+        padding-left: 0;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+    }
+    #menu ul li {
+        
+        display: inline-block;
+        float: left;
+        margin-left: 20px;
+    }
+        #menu ul li a {
+            text-align:center;
+            padding-right: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+        }
+    #menu ul li a:hover {
+        color:#000;
+    }
+
+
+ #maincontent{
+     width:100%;
+     height:auto;
+     margin:30px auto;
+     margin-top:5px;
+ }
+
+ #rightcontent{
+    float:right;
+    width:35%;
+    background:#fff;
+    border:1px solid #0a3c42;
+    /*box-shadow:5px 5px 5px #808080;*/
+    margin-top:10px;
+    margin-bottom:10px;
+    /*border-radius:7px;*/ /*//bo tron goc*/
+ }
+#content {
+    float: left;
+    width: 62%;
+    background: #fff;
+    border: 1px solid #0a3c42;
+    /*box-shadow: 5px 5px 5px #808080;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /*border-radius:7px;*/
+}
+#rcontent div{
+    height:auto;
+    padding:10px 15px;
+    text-align:justify; /*can deu noi dung*/
+}
+#rcontent ul {
+    border: 1px solid #0a3c42;
+}
+#rcontent ul li{
+    list-style-type:none;
+    margin:20px 20px 10px 0;
+}
+    #rcontent a {
+        text-align:center;
+        text-decoration: none;
+        color:#333;
+        font-size:16px;
+        font-family:Arial;
+        font-weight:lighter;
+    }
+        #rcontent a:hover {
+            text-decoration: none;
+            color: #ff0000;
+            font-size: 17px;
+            font-family: Arial;
+            font-weight: bold;
+        }
+#content h1 {
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: #ff0000;
+}
+
+#rightcontent h1 {
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: #fff;
+    background: #ED4848;
+}
+
+
+
+#myBtn{
+    width:50px;
+    height:50px;
+    display: none; /* Mặc định button sẽ được ẩn*/
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99; /* button được ưu tiên hiển thị đè lên các phần khác*/
+    border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    padding: 1px;
+    border-radius: 5px;
+}
+    #myBtn img{
+        width:100%;
+        height:100%;
+    }
+
+    #myBtn:hover {
+        background-color: #555;
+    }
+
+#searchinput {
+    color: #a19f9f;
+    font-family: Tahoma;
+    top: 0;
+    left: 0;
+    border: solid;
+    background: none;
+    width: 95%;
+    padding: 6px;
+}
+
+#noidung {
+    padding:10px;
+    text-align: justify;/*can deu noi dung*/
+    height:auto;
+    margin-bottom:10px;
+}
+    #noidung a {
+        color: #333;
+        font-weight: lighter;
+        text-decoration: none;
+        font-family: Tahoma, Times, serif;
+        font-size: 16px;
+    }
+    #noidung a:hover {
+        color: red;
+        text-decoration: none;
+    }
+.baiviet-trai {
+    margin-top:10px;
+    width: 45%;
+    height: auto;
+    float: left;
+}
+.baiviet-trai a{
+    height:2em;
+}
+.img-trai{
+    width:100%;
+    height:250px;
+}
+
+.baiviet-phai {
+    margin-top:10px;
+    width: 50%;
+    height: auto;
+    float: left;
+    padding-left:20px;
+}
+    .baiviet-phai a{
+        float:left;
+        width:60%;
+        height:100px;
+        margin-bottom:10px;
+        margin-left:10px;
+    }
+.img-phai {
+    float:left;
+    width: 35%;
+    height:100px;
+}
+
+
+.baiviet-bantin {
+    margin-top: 10px;
+    width: 45%;
+    height: auto;
+    float: left;
+    padding-left: 20px;
+}
+
+    .baiviet-bantin a {
+        float: left;
+        width: 55%;
+        height: 150px;
+        margin:20px 10px 10px 10px;
+    }
+.img-tin {
+    float: left;
+    width: 35%;
+    height: 150px;
+    margin: 20px 10px 10px 10px;
+}
+    
+
+
+
+
+
+#footer {
+    clear: both;
+    background: #ED4848;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#footercontent{
+    text-align:center;
+    color:#fff;
+    padding:15px;
+}
+
+@media screen and (max-width: 990px) {
+    #content, #rightcontent,.baiviet-phai,.baiviet-trai ,.baiviet-bantin{
+        width: 100%;
+        height:100%;
+        padding:0;
+    }
+    .baiviet-phai a,.baiviet-bantin a{
+        width:100%;
+    }
+    .img-phai,.img-trai,.img-tin{
+        width:100%;
+        height:150px;
+        margin: 0 auto;
+    }
+    #menutop{
+        height:150px;
+    }
+    #menu ul li {
+        width:100%;
+    }
+}
